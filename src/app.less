@@ -1,0 +1,39 @@
+body {
+  margin: 0px;
+}
+
+.header {
+  background: #ffa587;
+}
+
+.contents {
+  padding: 15px;
+  background: #cfcfcf;
+  .game {
+    background: inherit;
+    border: none;
+    ol.words {
+      @border-width: 2px;
+      li {
+        ////ボーダーの幅も含めた高さを固定する方法
+        //box-sizing: border-box;
+        //height: 28px;
+        //&.active {
+        //  border-bottom: 2px solid black;
+        //}
+        padding-bottom: @border-width;
+        &.active {
+          padding-bottom: 0px;
+          border-bottom: @border-width solid black;
+          span.filled {
+            color: blue;
+            border-bottom: 2px solid blue;
+          }
+          span.incorrect {
+            background: yellow;
+          }
+        }
+      }
+    }
+  }
+}

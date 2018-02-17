@@ -1,0 +1,5 @@
+node_modules/
+bundle.js
+
+config/*
+!config/default.yml
