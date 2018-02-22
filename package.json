@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --content-base dist",
     "lint": "eslint --ext .jsx src",
-    "test": "npm run lint"
+    "test": "npm run lint",
+    "flow": "flow"
   },
   "author": "makky",
   "license": "ISC",
@@ -14,12 +15,15 @@
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.0.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "css-loader": "^0.28.4",
     "eslint": "^4.0.0",
     "eslint-plugin-react": "^7.1.0",
+    "flow-bin": "^0.66.0",
     "less": "^2.7.2",
     "less-loader": "^4.0.4",
     "style-loader": "^0.18.2",
