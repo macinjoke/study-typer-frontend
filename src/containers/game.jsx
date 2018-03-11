@@ -1,24 +1,24 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 import EventListener from 'react-event-listener';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Actions from './../actions/actions';
+import * as actions from './../actions/actions';
 import config from 'config';
 
-class Game extends React.Component {
+type Props = {
+  actions: any,
+  pushedKey: string,
+  words: any,
+  wordIndex: number,
+  matchingIndex: number,
+  currentInput: string,
+  rank: number
+}
 
-  static propTypes = {
-    actions: PropTypes.object,
-    pushedKey: PropTypes.string.isRequired,
-    words: PropTypes.array.isRequired,
-    wordIndex: PropTypes.number.isRequired,
-    matchingIndex: PropTypes.number.isRequired,
-    currentInput: PropTypes.string.isRequired,
-    rank: PropTypes.number.isRequired
-  }
+class Game extends React.Component<Props> {
 
-  onKeyDown = (e) => {
+  onKeyDown = (e: SyntheticKeyboardEvent<>) => {
     const {actions, currentInput, matchingIndex, words, wordIndex} = this.props;
 
     const currentWord = words[wordIndex].en
@@ -60,7 +60,7 @@ class Game extends React.Component {
   }
 
   playEnglishSound = (en) => {
-    const audio = new Audio(`_my_gitignored/audio/${en}.flac`);
+    const audio: Audio = new Audio(`_my_gitignored/audio/${en}.flac`);
     audio.play()
   }
 
@@ -142,7 +142,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    actions: bindActionCreators(Actions, dispatch)
+    actions: bindActionCreators(actions, dispatch)
   }
 }
 
