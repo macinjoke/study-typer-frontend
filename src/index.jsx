@@ -1,14 +1,16 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Root from './containers/root';
+import { Provider } from 'react-redux';
+// import Root from './containers/root';
+import App from './containers/app';
 import configureStore from './store/store';
 import './app.less';
 
 const store = configureStore();
 
 render(
-  <div>
-    <Root store={store}/>
-  </div>,
+  <Provider store={store}>
+    <App/>
+  </Provider>,
   document.getElementById('app')
 )
