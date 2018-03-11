@@ -6,7 +6,8 @@
   },
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:flowtype/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": 6,
@@ -16,7 +17,8 @@
     }
   },
   "plugins": [
-    "react"
+    "react",
+    "flowtype"
   ],
   "parser": "babel-eslint",
   "rules": {
