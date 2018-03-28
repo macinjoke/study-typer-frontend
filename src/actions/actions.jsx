@@ -1,49 +1,55 @@
-const Actions = {
-  inputKey(value) {
-    return {
-      type: 'INPUT_KEY',
-      value
-    }
-  },
-  clearInput() {
-    return {
-      type: 'CLEAR_INPUT',
-    }
-  },
-  loadWords(words) {
-    return {
-      type: 'LOAD_WORDS',
-      words
-    }
-  },
-  setWord(index) {
-    return {
-      type: 'SET_WORD',
-      index
-    }
-  },
-  backChar() {
-    return {
-      type: 'BACK_CHAR',
-    }
-  },
-  setMatchingIndex(index) {
-    return {
-      type: 'SET_MATCHING_INDEX',
-      index
-    }
-  },
-  setRank(value) {
-    return {
-      type: 'SET_RANK',
-      value
-    }
-  },
-  reset() {
-    return {
-      type: 'RESET'
-    }
+// @flow
+
+export const inputKey = (value: string) => {
+  return {
+    type: 'INPUT_KEY',
+    value
   }
 }
 
-export default Actions
+export const clearInput = () => {
+  return {
+    type: 'CLEAR_INPUT',
+  }
+}
+
+export const loadWords = (words: Array<string>) => {
+  return {
+    type: 'LOAD_WORDS',
+    words
+  }
+}
+
+export const setWord = (index: number) => {
+  return {
+    type: 'SET_WORD',
+    index
+  }
+}
+
+export const backChar = () => {
+  return {
+    type: 'BACK_CHAR',
+  }
+}
+
+export const setMatchingIndex = (index: number) => {
+  return {
+    type: 'SET_MATCHING_INDEX',
+    index
+  }
+}
+
+export const setRank = (value: number) => {
+  return {
+    type: 'SET_RANK',
+    value
+  }
+}
+
+export const reset = () => {
+  return {
+    type: 'RESET'
+  }
+}
+

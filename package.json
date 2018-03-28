@@ -33,7 +33,6 @@
   },
   "dependencies": {
     "config": "^1.29.0",
-    "prop-types": "^15.5.10",
     "react": "^15.6.0",
     "react-dom": "^15.6.0",
     "react-event-listener": "^0.4.5",

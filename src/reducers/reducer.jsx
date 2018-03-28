@@ -1,3 +1,14 @@
+// @flow
+
+type State = {
+  +pushedKey: string,
+  +words: Array<string>,
+  +wordIndex: number,
+  +matchingIndex: number,
+  +currentInput: string,
+  +rank: number
+}
+
 const initialState = {
   pushedKey: '',
   words: [],
@@ -7,7 +18,7 @@ const initialState = {
   rank: 0
 }
 
-const reducer = (state=initialState, action) => {
+const reducer = (state: State=initialState, action: any) => {
   switch (action.type) {
     case 'INPUT_KEY': {
       return Object.assign({}, state, {

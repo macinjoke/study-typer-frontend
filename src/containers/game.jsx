@@ -3,8 +3,12 @@ import React from 'react';
 import EventListener from 'react-event-listener';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from './../actions/actions';
+import * as actionCreators from './../actions/actions';
+// import * as actionCreators: ActionCreators from './../actions/actions';
+console.log(actionCreators);
 import config from 'config';
+
+import type {Dispatch} from "redux";
 
 type Props = {
   actions: any,
@@ -140,9 +144,9 @@ const mapStateToProps = state => {
   return state
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch: Dispatch<{type: string}>) => {
   return {
-    actions: bindActionCreators(actions, dispatch)
+    actions: bindActionCreators(actionCreators, dispatch)
   }
 }
 

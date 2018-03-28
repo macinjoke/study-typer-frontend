@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
@@ -8,9 +9,15 @@ import './app.less';
 
 const store = configureStore();
 
+const element = document.getElementById('app');
+
+if (!element) {
+  throw new Error("couldn't find element with id app")
+}
+
 render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('app')
+  element
 )
