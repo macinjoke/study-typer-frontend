@@ -2,16 +2,18 @@
 import React from 'react';
 import EventListener from 'react-event-listener';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as actionCreators from './../actions/actions';
-// import * as actionCreators: ActionCreators from './../actions/actions';
-console.log(actionCreators);
+import * as actions from './../actions/actions';
 import config from 'config';
 
-import type {Dispatch} from "redux";
-
 type Props = {
-  actions: any,
+  inputKey: (value: string) => void,
+  clearInput: () => void,
+  loadWords: (words: Array<string>) => void,
+  setWord: (index: number) => void,
+  backChar: () => void,
+  setMatchingIndex: (index: number) => void,
+  setRank: (value: number) => void,
+  reset: () => void,
   pushedKey: string,
   words: any,
   wordIndex: number,
@@ -23,22 +25,25 @@ type Props = {
 class Game extends React.Component<Props> {
 
   onKeyDown = (e: SyntheticKeyboardEvent<>) => {
-    const {actions, currentInput, matchingIndex, words, wordIndex} = this.props;
+    const {
+      setMatchingIndex, backChar, inputKey, currentInput,
+      matchingIndex, words, wordIndex
+    } = this.props;
 
     const currentWord = words[wordIndex].en
     if(
       matchingIndex === currentInput.length - 1 &&
       e.key === currentWord[matchingIndex + 1]
     ) {
-      actions.setMatchingIndex(matchingIndex + 1)
+      setMatchingIndex(matchingIndex + 1)
     }
     if(e.key === 'Backspace' && currentInput.length > 0) {
       if(matchingIndex === currentInput.length - 1) {
-        actions.setMatchingIndex(matchingIndex - 1)
+        setMatchingIndex(matchingIndex - 1)
       }
-      actions.backChar();
+      backChar();
     } else if(e.key.length === 1){
-      actions.inputKey(e.key)
+      inputKey(e.key)
       if (e.key === " ") {
         // prevent page scroll by space key
         e.preventDefault()
@@ -47,19 +52,19 @@ class Game extends React.Component<Props> {
   }
 
   onClick = (e) => {
-    const {actions} = this.props;
+    const {clearInput} = this.props;
     e.preventDefault();
-    actions.clearInput();
+    clearInput();
   }
 
   fetchWords = (rank=0) => {
-    const {actions} = this.props
+    const {loadWords} = this.props
     const url = `http://${config.api_server.host}:${config.api_server.port}/api/words?rank=${rank}`
     console.log(url)
     fetch(url, {'mode': 'cors'}).then(res => {
       return res.json()
     }).then(json => {
-      actions.loadWords(json)
+      loadWords(json)
     })
   }
 
@@ -69,16 +74,16 @@ class Game extends React.Component<Props> {
   }
 
   handleRankChange = (e) => {
-    const {actions} = this.props;
+    const {setRank} = this.props;
     const rank = Number(e.target.value)
     this.reset()
-    actions.setRank(rank);
+    setRank(rank);
     this.fetchWords(rank);
   }
 
   reset = () => {
-    const {actions} = this.props;
-    actions.reset();
+    const {reset} = this.props;
+    reset();
   }
 
   componentWillMount() {
@@ -86,10 +91,10 @@ class Game extends React.Component<Props> {
   }
 
   componentWillReceiveProps(nextProps) {
-    const {actions, currentInput, words, wordIndex} = nextProps
+    const {setWord, clearInput, currentInput, words, wordIndex} = nextProps
     if(currentInput && currentInput === words[wordIndex].en) {
-      actions.setWord(wordIndex + 1)
-      actions.clearInput()
+      setWord(wordIndex + 1)
+      clearInput()
       this.playEnglishSound(words[wordIndex + 1].en)
     }
   }
@@ -140,14 +145,4 @@ class Game extends React.Component<Props> {
   }
 }
 
-const mapStateToProps = state => {
-  return state
-}
-
-const mapDispatchToProps = (dispatch: Dispatch<{type: string}>) => {
-  return {
-    actions: bindActionCreators(actionCreators, dispatch)
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Game)
+export default connect(s => s, actions)(Game)
