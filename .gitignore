@@ -3,3 +3,5 @@ bundle.js
 
 config/*
 !config/default.yml
+yarn-error.log
+
