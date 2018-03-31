@@ -1,14 +1,5 @@
 // @flow
-import type {Action} from '../types'
-
-type State = {
-  +pushedKey: string,
-  +words: Array<string>,
-  +wordIndex: number,
-  +matchingIndex: number,
-  +currentInput: string,
-  +rank: number
-}
+import type {Action, State} from '../types'
 
 const initialState = {
   pushedKey: '',
@@ -19,7 +10,7 @@ const initialState = {
   rank: 0
 }
 
-const reducer = (state: State=initialState, action: Action) => {
+const reducer = (state: State=initialState, action: Action): State => {
   switch (action.type) {
     case 'INPUT_KEY': {
       return {

@@ -1,5 +1,7 @@
 // @flow
 
+import type {Store as ReduxStore} from 'redux'
+
 export type Action =
   | {type: 'INPUT_KEY', +value: string}
   | {type: 'CLEAR_INPUT'}
@@ -9,3 +11,14 @@ export type Action =
   | {type: 'SET_MATCHING_INDEX', index: number}
   | {type: 'SET_RANK', value: number}
   | {type: 'RESET'}
+
+export type State = {
+  +pushedKey: string,
+  +words: Array<string>,
+  +wordIndex: number,
+  +matchingIndex: number,
+  +currentInput: string,
+  +rank: number
+}
+
+export type Store = ReduxStore<State, Action>
