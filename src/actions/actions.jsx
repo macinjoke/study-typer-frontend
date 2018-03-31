@@ -1,56 +1,56 @@
 // @flow
 import type {Action} from '../types'
 
-export const inputKey = (value: string): Action => { // TODO: return 使わない
-  return {
+export const inputKey = (value: string): Action => (
+  {
     type: 'INPUT_KEY',
     value
   }
-}
+)
 
-export const clearInput = (): Action =>{
-  return {
+export const clearInput = (): Action =>(
+  {
     type: 'CLEAR_INPUT',
   }
-}
+)
 
-export const loadWords = (words: Array<string>): Action => {
-  return {
+export const loadWords = (words: Array<string>): Action => (
+  {
     type: 'LOAD_WORDS',
     words
   }
-}
+)
 
-export const setWord = (index: number): Action => {
-  return {
+export const setWord = (index: number): Action => (
+  {
     type: 'SET_WORD',
     index
   }
-}
+)
 
-export const backChar = (): Action => {
-  return {
+export const backChar = (): Action => (
+  {
     type: 'BACK_CHAR',
   }
-}
+)
 
-export const setMatchingIndex = (index: number): Action => {
-  return {
+export const setMatchingIndex = (index: number): Action => (
+  {
     type: 'SET_MATCHING_INDEX',
     index
   }
-}
+)
 
-export const setRank = (value: number): Action => {
-  return {
+export const setRank = (value: number): Action => (
+  {
     type: 'SET_RANK',
     value
   }
-}
+)
 
-export const reset = (): Action => {
-  return {
+export const reset = (): Action => (
+  {
     type: 'RESET'
   }
-}
+)
 
