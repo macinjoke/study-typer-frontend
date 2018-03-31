@@ -1,4 +1,5 @@
 // @flow
+import type {Action} from '../types'
 
 type State = {
   +pushedKey: string,
@@ -18,7 +19,7 @@ const initialState = {
   rank: 0
 }
 
-const reducer = (state: State=initialState, action: any) => {
+const reducer = (state: State=initialState, action: Action) => {
   switch (action.type) {
     case 'INPUT_KEY': {
       return {
