@@ -1,4 +1,6 @@
 // @flow
+type Exact<T> = T & $Shape<T>
+
 import type {Action, State} from '../types'
 
 const initialState = {
@@ -10,7 +12,7 @@ const initialState = {
   rank: 0
 }
 
-const reducer = (state: State=initialState, action: Action): State => {
+const reducer = (state: Exact<State>=initialState, action: Action): Exact<State> => {
   switch (action.type) {
     case 'INPUT_KEY': {
       return {

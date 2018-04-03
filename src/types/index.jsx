@@ -13,12 +13,12 @@ export type Action =
   | {type: 'RESET'}
 
 export type State = {
-  +pushedKey: string,
-  +words: Array<string>,
-  +wordIndex: number,
-  +matchingIndex: number,
-  +currentInput: string,
-  +rank: number
+  pushedKey: string,
+  words: Array<string>,
+  wordIndex: number,
+  matchingIndex: number,
+  currentInput: string,
+  rank: number
 }
 
 export type Store = ReduxStore<State, Action>
