@@ -2,8 +2,9 @@
 import React from 'react';
 import EventListener from 'react-event-listener';
 import { connect } from 'react-redux';
-import * as actions from './../actions/actions';
 import config from 'config';
+import * as actions from './../actions/actions';
+import WordList from '../components/WordList'
 
 type Props = {
   inputKey: (value: string) => void,
@@ -112,24 +113,10 @@ class Game extends React.Component<Props> {
         <EventListener onKeyDown={this.onKeyDown} target="window" />
         <p>game</p>
         { words &&
-          <ol className="words">
-            { words.map((word, i) => ( i === wordIndex ?
-              <li key={i} className="active">
-                <span className="filled">{word.en.slice(0, matchingIndex + 1)}</span>
-                { currentInput.length > matchingIndex + 1 ?
-                  <span>
-                    <span className="incorrect">{word.en.slice(matchingIndex + 1, currentInput.length)}</span>
-                    <span className="unfilled">{word.en.slice(currentInput.length)}</span>
-                  </span> :
-                  <span className="unfilled">{word.en.slice(matchingIndex + 1)}</span>
-                }
-                <span> : {words[wordIndex].ja}</span>
-              </li> :
-              <li key={i} className="inactive">
-                <span>{word.en}</span>
-              </li>
-            ))}
-          </ol>
+          <WordList
+            words={words} wordIndex={wordIndex}
+            matchingIndex={matchingIndex} currentInput={currentInput}
+          />
         }
         <p>pushedKey: <b>{pushedKey}</b></p>
         <p>currentWord: <b>{words.length > 0 && words[wordIndex].en}</b></p>
