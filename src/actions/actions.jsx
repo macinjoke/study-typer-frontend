@@ -1,5 +1,5 @@
 // @flow
-import type {Action} from '../types'
+import type {Action, Words} from '../types'
 
 export const inputKey = (value: string): Action => (
   {
@@ -14,7 +14,7 @@ export const clearInput = (): Action =>(
   }
 )
 
-export const loadWords = (words: Array<string>): Action => (
+export const loadWords = (words: Words): Action => (
   {
     type: 'LOAD_WORDS',
     words

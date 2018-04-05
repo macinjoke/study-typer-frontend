@@ -1,10 +1,12 @@
 // @flow
 
+import type {Words} from '../types'
+
 import React from 'react';
 import Word from '../components/Word'
 
 type Props = {
-  words: Array<any>,
+  words: Words,
   wordIndex: number,
   matchingIndex: number,
   currentInput: string

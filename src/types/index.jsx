@@ -2,10 +2,18 @@
 
 import type {Store as ReduxStore} from 'redux'
 
+export type Word = {
+  +en: string,
+  +ja: string,
+  +rank: number
+}
+
+export type Words = Array<Word>
+
 export type Action =
   | {type: 'INPUT_KEY', +value: string}
   | {type: 'CLEAR_INPUT'}
-  | {type: 'LOAD_WORDS', words: any} // TODO: Word の型を定義する
+  | {type: 'LOAD_WORDS', words: Words}
   | {type: 'SET_WORD', index: number}
   | {type: 'BACK_CHAR'}
   | {type: 'SET_MATCHING_INDEX', index: number}
@@ -14,7 +22,7 @@ export type Action =
 
 export type State = {
   pushedKey: string,
-  words: Array<string>,
+  words: Words,
   wordIndex: number,
   matchingIndex: number,
   currentInput: string,
