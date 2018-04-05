@@ -22,6 +22,7 @@ const Word = (props: Props) => {
       <span className="unfilled">{
         props.en.slice(props.filledNum + props.missedNum)
       }</span>
+      <span> : {props.ja}</span>
     </li> :
     <li className="inactive">
       <span>{props.en}</span>
