@@ -77,7 +77,9 @@ class Game extends React.Component<Props> {
   }
 
   componentWillMount() {
-    this.props.fetchWords(1);
+    const {fetchWords, setRank} = this.props
+    fetchWords(1)
+    setRank(1)
   }
 
   componentWillReceiveProps(nextProps) {
