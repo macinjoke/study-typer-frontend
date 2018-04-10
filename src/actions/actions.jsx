@@ -1,6 +1,8 @@
 // @flow
 import type {Action, Words} from '../types'
 
+import config from 'config';
+
 export const inputKey = (value: string): Action => (
   {
     type: 'INPUT_KEY',
@@ -11,13 +13,6 @@ export const inputKey = (value: string): Action => (
 export const clearInput = (): Action =>(
   {
     type: 'CLEAR_INPUT',
-  }
-)
-
-export const loadWords = (words: Words): Action => (
-  {
-    type: 'LOAD_WORDS',
-    words
   }
 )
 
@@ -54,3 +49,35 @@ export const reset = (): Action => (
   }
 )
 
+export const setWords = (words: Words): Action => (
+  {
+    type: 'SET_WORDS',
+    words
+  }
+)
+
+export const errorFetchWords = (err: Object): Action => (
+  {
+    type: 'ERROR_FETCH_WORDS',
+    err
+  }
+)
+
+export const fetchWords = (rank: number) => {
+  return (dispatch: Dispatch) => {
+    const url = `http://${config.api_server.host}:${config.api_server.port}/api/words?rank=${rank}`
+    console.log(url)
+    fetch(url, {'mode': 'cors'}).then(res => {
+      if (res.ok) {
+        return res.json()
+      } else {
+        throw res
+      }
+    }).then(json => {
+      dispatch(setWords(json))
+    }).catch(err => {
+      console.log(err)
+      dispatch(errorFetchWords(err))
+    })
+  }
+}

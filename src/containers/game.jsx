@@ -2,14 +2,13 @@
 import React from 'react';
 import EventListener from 'react-event-listener';
 import { connect } from 'react-redux';
-import config from 'config';
 import * as actions from './../actions/actions';
 import WordList from '../components/WordList'
 
 type Props = {
   inputKey: (value: string) => void,
   clearInput: () => void,
-  loadWords: (words: Array<string>) => void,
+  fetchWords: (rank: number) => Promise<any>,
   setWord: (index: number) => void,
   backChar: () => void,
   setMatchingIndex: (index: number) => void,
@@ -20,7 +19,8 @@ type Props = {
   wordIndex: number,
   matchingIndex: number,
   currentInput: string,
-  rank: number
+  rank: number,
+  fetchError: Object
 }
 
 class Game extends React.Component<Props> {
@@ -58,28 +58,17 @@ class Game extends React.Component<Props> {
     clearInput();
   }
 
-  fetchWords = (rank=0) => {
-    const {loadWords} = this.props
-    const url = `http://${config.api_server.host}:${config.api_server.port}/api/words?rank=${rank}`
-    console.log(url)
-    fetch(url, {'mode': 'cors'}).then(res => {
-      return res.json()
-    }).then(json => {
-      loadWords(json)
-    })
-  }
-
   playEnglishSound = (en) => {
     const audio: Audio = new Audio(`_my_gitignored/audio/${en}.flac`);
     audio.play()
   }
 
   handleRankChange = (e) => {
-    const {setRank} = this.props;
+    const {setRank, fetchWords} = this.props;
     const rank = Number(e.target.value)
     this.reset()
     setRank(rank);
-    this.fetchWords(rank);
+    fetchWords(rank);
   }
 
   reset = () => {
@@ -88,7 +77,7 @@ class Game extends React.Component<Props> {
   }
 
   componentWillMount() {
-    this.fetchWords();
+    this.props.fetchWords(1);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -107,10 +96,15 @@ class Game extends React.Component<Props> {
       wordIndex,
       matchingIndex,
       currentInput,
+      rank,
+      fetchError,
     } = this.props;
     return (
       <div className="game">
         <EventListener onKeyDown={this.onKeyDown} target="window" />
+        { fetchError &&
+          <p style={{color: "red"}}>エラーが起きました: {fetchError.status}</p>
+        }
         <p>game</p>
         { words &&
           <WordList
@@ -125,7 +119,11 @@ class Game extends React.Component<Props> {
         <button onClick={this.onClick}>clear</button>
         <p>{matchingIndex}</p>
         <span>rank: </span>
-        <input type="number" name="rank" min="0" max="30" onChange={this.handleRankChange} />
+        <input
+          type="number" name="rank" min="0" max="30"
+          onChange={this.handleRankChange}
+          value={rank}
+        />
         <p><button onClick={this.reset}>Reset</button></p>
       </div>
     )

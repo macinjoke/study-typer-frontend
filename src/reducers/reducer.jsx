@@ -9,7 +9,8 @@ const initialState = {
   wordIndex: 0,
   matchingIndex: -1,
   currentInput: '',
-  rank: 0
+  rank: 0,
+  fetchError: null
 }
 
 const reducer = (state: Exact<State>=initialState, action: Action): Exact<State> => {
@@ -23,9 +24,6 @@ const reducer = (state: Exact<State>=initialState, action: Action): Exact<State>
     }
     case 'CLEAR_INPUT': {
       return {...state, currentInput: '', matchingIndex: -1}
-    }
-    case 'LOAD_WORDS': {
-      return {...state, words: action.words}
     }
     case 'SET_WORD': {
       return {...state, wordIndex: action.index}
@@ -47,6 +45,13 @@ const reducer = (state: Exact<State>=initialState, action: Action): Exact<State>
         matchingIndex: -1,
         currentInput: ''
       }
+    }
+    case 'SET_WORDS': {
+      return {...state, words: action.words}
+    }
+    case 'ERROR_FETCH_WORDS': {
+      console.log(action.err)
+      return {...state, fetchError: action.err}
     }
     default: {
       return state;
