@@ -64,20 +64,19 @@ export const errorFetchWords = (err: Object): Action => (
 )
 
 export const fetchWords = (rank: number) => {
-  return (dispatch: Dispatch) => {
+  return async (dispatch: Dispatch<Action>) => {
     const url = `http://${config.api_server.host}:${config.api_server.port}/api/words?rank=${rank}`
     console.log(url)
-    fetch(url, {'mode': 'cors'}).then(res => {
+    try {
+      const res = await fetch(url, {'mode': 'cors'})
       if (res.ok) {
-        return res.json()
+        const json = await res.json()
+        dispatch(setWords(json))
       } else {
-        throw res
+        dispatch(errorFetchWords(res))
       }
-    }).then(json => {
-      dispatch(setWords(json))
-    }).catch(err => {
-      console.log(err)
+    } catch(err) {
       dispatch(errorFetchWords(err))
-    })
+    }
   }
 }
