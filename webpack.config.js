@@ -3,7 +3,7 @@ var config = require("config");
 
 module.exports = {
   entry: {
-    app: ["./src/index.jsx"]
+    app: ["babel-polyfill", "./src/index.jsx"]
   },
   output: {
     path: path.resolve(__dirname, "dist"),
