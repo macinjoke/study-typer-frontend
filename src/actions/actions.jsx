@@ -1,5 +1,5 @@
 // @flow
-import type {Action, Words} from '../types'
+import type {Action, ThunkAction, Words} from '../types'
 
 import config from 'config';
 
@@ -63,8 +63,8 @@ export const errorFetchWords = (err: Object): Action => (
   }
 )
 
-export const fetchWords = (rank: number) => {
-  return async (dispatch: Dispatch<Action>) => {
+export const fetchWords = (rank: number): ThunkAction => {
+  return async (dispatch) => {
     const url = `http://${config.api_server.host}:${config.api_server.port}/api/words?rank=${rank}`
     console.log(url)
     try {
