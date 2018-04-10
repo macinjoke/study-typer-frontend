@@ -64,16 +64,11 @@ class Game extends React.Component<Props> {
   }
 
   handleRankChange = (e) => {
-    const {setRank, fetchWords} = this.props;
+    const {setRank, fetchWords, reset} = this.props;
     const rank = Number(e.target.value)
-    this.reset()
+    reset()
     setRank(rank);
     fetchWords(rank);
-  }
-
-  reset = () => {
-    const {reset} = this.props;
-    reset();
   }
 
   componentWillMount() {
@@ -100,6 +95,7 @@ class Game extends React.Component<Props> {
       currentInput,
       rank,
       fetchError,
+      reset,
     } = this.props;
     return (
       <div className="game">
@@ -126,7 +122,7 @@ class Game extends React.Component<Props> {
           onChange={this.handleRankChange}
           value={rank}
         />
-        <p><button onClick={this.reset}>Reset</button></p>
+        <p><button onClick={reset}>Reset</button></p>
       </div>
     )
   }
