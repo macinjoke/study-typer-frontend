@@ -9,7 +9,7 @@ type Props = {
   words: Words,
   wordIndex: number,
   matchingIndex: number,
-  currentInput: string
+  currentInput: string,
 }
 
 const WordList = (props: Props) => {

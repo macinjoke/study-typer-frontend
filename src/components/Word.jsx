@@ -7,7 +7,7 @@ type Props = {
   ja: string,
   isActive: boolean,
   filledNum: ?number,
-  missedNum: ?number
+  missedNum: ?number,
 }
 
 const Word = (props: Props) => {

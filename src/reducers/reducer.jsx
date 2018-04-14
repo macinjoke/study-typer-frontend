@@ -10,7 +10,7 @@ const initialState = {
   matchingIndex: -1,
   currentInput: '',
   rank: 0,
-  fetchError: null
+  fetchError: null,
 }
 
 const reducer = (
@@ -22,7 +22,7 @@ const reducer = (
       return {
         ...state,
         pushedKey: action.value,
-        currentInput: state.currentInput + action.value
+        currentInput: state.currentInput + action.value,
       }
     }
     case 'CLEAR_INPUT': {
@@ -46,7 +46,7 @@ const reducer = (
         pushedKey: '',
         wordIndex: 0,
         matchingIndex: -1,
-        currentInput: ''
+        currentInput: '',
       }
     }
     case 'SET_WORDS': {

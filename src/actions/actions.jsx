@@ -5,44 +5,44 @@ import config from 'config'
 
 export const inputKey = (value: string): Action => ({
   type: 'INPUT_KEY',
-  value
+  value,
 })
 
 export const clearInput = (): Action => ({
-  type: 'CLEAR_INPUT'
+  type: 'CLEAR_INPUT',
 })
 
 export const setWord = (index: number): Action => ({
   type: 'SET_WORD',
-  index
+  index,
 })
 
 export const backChar = (): Action => ({
-  type: 'BACK_CHAR'
+  type: 'BACK_CHAR',
 })
 
 export const setMatchingIndex = (index: number): Action => ({
   type: 'SET_MATCHING_INDEX',
-  index
+  index,
 })
 
 export const setRank = (value: number): Action => ({
   type: 'SET_RANK',
-  value
+  value,
 })
 
 export const reset = (): Action => ({
-  type: 'RESET'
+  type: 'RESET',
 })
 
 export const setWords = (words: Words): Action => ({
   type: 'SET_WORDS',
-  words
+  words,
 })
 
 export const errorFetchWords = (err: Object): Action => ({
   type: 'ERROR_FETCH_WORDS',
-  err
+  err,
 })
 
 export const fetchWords = (rank: number): ThunkAction => {

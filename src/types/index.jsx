@@ -5,7 +5,7 @@ import type { Store as ReduxStore } from 'redux'
 export type Word = {
   +en: string,
   +ja: string,
-  +rank: number
+  +rank: number,
 }
 
 export type Words = Array<Word>
@@ -28,7 +28,7 @@ export type State = {
   matchingIndex: number,
   currentInput: string,
   rank: number,
-  fetchError: ?Object
+  fetchError: ?Object,
 }
 
 export type Store = ReduxStore<State, Action>

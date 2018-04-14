@@ -20,7 +20,7 @@ type Props = {
   matchingIndex: number,
   currentInput: string,
   rank: number,
-  fetchError: Object
+  fetchError: Object,
 }
 
 class Game extends React.Component<Props> {
@@ -32,7 +32,7 @@ class Game extends React.Component<Props> {
       currentInput,
       matchingIndex,
       words,
-      wordIndex
+      wordIndex,
     } = this.props
 
     const currentWord = words[wordIndex].en
@@ -99,7 +99,7 @@ class Game extends React.Component<Props> {
       currentInput,
       rank,
       fetchError,
-      reset
+      reset,
     } = this.props
     return (
       <div className="game">
