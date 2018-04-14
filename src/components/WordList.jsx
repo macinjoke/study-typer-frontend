@@ -1,9 +1,9 @@
 // @flow
 
-import type { Words } from "../types"
+import type { Words } from '../types'
 
-import React from "react"
-import Word from "../components/Word"
+import React from 'react'
+import Word from '../components/Word'
 
 type Props = {
   words: Words,

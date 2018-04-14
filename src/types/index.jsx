@@ -1,6 +1,6 @@
 // @flow
 
-import type { Store as ReduxStore } from "redux"
+import type { Store as ReduxStore } from 'redux'
 
 export type Word = {
   +en: string,
@@ -11,15 +11,15 @@ export type Word = {
 export type Words = Array<Word>
 
 export type Action =
-  | { type: "INPUT_KEY", +value: string }
-  | { type: "CLEAR_INPUT" }
-  | { type: "SET_WORDS", words: Words }
-  | { type: "SET_WORD", index: number }
-  | { type: "BACK_CHAR" }
-  | { type: "SET_MATCHING_INDEX", index: number }
-  | { type: "SET_RANK", value: number }
-  | { type: "RESET" }
-  | { type: "ERROR_FETCH_WORDS", err: Object }
+  | { type: 'INPUT_KEY', +value: string }
+  | { type: 'CLEAR_INPUT' }
+  | { type: 'SET_WORDS', words: Words }
+  | { type: 'SET_WORD', index: number }
+  | { type: 'BACK_CHAR' }
+  | { type: 'SET_MATCHING_INDEX', index: number }
+  | { type: 'SET_RANK', value: number }
+  | { type: 'RESET' }
+  | { type: 'ERROR_FETCH_WORDS', err: Object }
 
 export type State = {
   pushedKey: string,

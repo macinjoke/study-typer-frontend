@@ -1,9 +1,9 @@
 // @flow
-import React from "react"
-import EventListener from "react-event-listener"
-import { connect } from "react-redux"
-import * as actions from "./../actions/actions"
-import WordList from "../components/WordList"
+import React from 'react'
+import EventListener from 'react-event-listener'
+import { connect } from 'react-redux'
+import * as actions from './../actions/actions'
+import WordList from '../components/WordList'
 
 type Props = {
   inputKey: (value: string) => void,
@@ -42,14 +42,14 @@ class Game extends React.Component<Props> {
     ) {
       setMatchingIndex(matchingIndex + 1)
     }
-    if (e.key === "Backspace" && currentInput.length > 0) {
+    if (e.key === 'Backspace' && currentInput.length > 0) {
       if (matchingIndex === currentInput.length - 1) {
         setMatchingIndex(matchingIndex - 1)
       }
       backChar()
     } else if (e.key.length === 1) {
       inputKey(e.key)
-      if (e.key === " ") {
+      if (e.key === ' ') {
         // prevent page scroll by space key
         e.preventDefault()
       }
@@ -105,7 +105,7 @@ class Game extends React.Component<Props> {
       <div className="game">
         <EventListener onKeyDown={this.onKeyDown} target="window" />
         {fetchError && (
-          <p style={{ color: "red" }}>
+          <p style={{ color: 'red' }}>
             エラーが起きました: {fetchError.status}
           </p>
         )}
