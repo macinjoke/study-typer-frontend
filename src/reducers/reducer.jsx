@@ -15,7 +15,7 @@ const initialState = {
 
 const reducer = (
   state: Exact<State> = initialState,
-  action: Action
+  action: Action,
 ): Exact<State> => {
   switch (action.type) {
     case 'INPUT_KEY': {

@@ -10,6 +10,6 @@ export default function configureStore(): Store {
     reducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ &&
       window.__REDUX_DEVTOOLS_EXTENSION__(),
-    applyMiddleware(thunk)
+    applyMiddleware(thunk),
   )
 }

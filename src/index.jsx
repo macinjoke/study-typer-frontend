@@ -18,5 +18,5 @@ render(
   <Provider store={store}>
     <App />
   </Provider>,
-  element
+  element,
 )
