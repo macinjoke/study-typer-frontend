@@ -1,6 +1,6 @@
 // @flow
-import React from 'react';
-import Game from '../containers/game';
+import React from "react"
+import Game from "../containers/game"
 
 const Contents = () => {
   return (
@@ -11,5 +11,4 @@ const Contents = () => {
   )
 }
 
-export default Contents;
-
+export default Contents

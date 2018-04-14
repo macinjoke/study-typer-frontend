@@ -1,15 +1,14 @@
 // @flow
-import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-// import Root from './containers/root';
-import App from './components/app';
-import configureStore from './store/store';
-import './app.less';
+import React from "react"
+import { render } from "react-dom"
+import { Provider } from "react-redux"
+import App from "./components/app"
+import configureStore from "./store/store"
+import "./app.less"
 
-const store = configureStore();
+const store = configureStore()
 
-const element = document.getElementById('app');
+const element = document.getElementById("app")
 
 if (!element) {
   throw new Error("couldn't find element with id app")
