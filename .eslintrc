@@ -6,6 +6,7 @@
   },
   "extends": [
     "eslint:recommended",
+    "airbnb",
     "plugin:react/recommended",
     "plugin:flowtype/recommended"
   ],
@@ -22,6 +23,7 @@
   ],
   "parser": "babel-eslint",
   "rules": {
-    "no-console": 1
+    "no-console": 1,
+    "semi": 0
   }
 }
