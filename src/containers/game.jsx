@@ -24,6 +24,21 @@ type Props = {
 }
 
 class Game extends React.Component<Props> {
+  componentWillMount() {
+    const { fetchWords, setRank } = this.props
+    fetchWords(1)
+    setRank(1)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { setWord, clearInput, currentInput, words, wordIndex } = nextProps
+    if (currentInput && currentInput === words[wordIndex].en) {
+      setWord(wordIndex + 1)
+      clearInput()
+      this.playEnglishSound(words[wordIndex + 1].en)
+    }
+  }
+
   onKeyDown = (e: SyntheticKeyboardEvent<>) => {
     const {
       setMatchingIndex,
@@ -73,21 +88,6 @@ class Game extends React.Component<Props> {
     reset()
     setRank(rank)
     fetchWords(rank)
-  }
-
-  componentWillMount() {
-    const { fetchWords, setRank } = this.props
-    fetchWords(1)
-    setRank(1)
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { setWord, clearInput, currentInput, words, wordIndex } = nextProps
-    if (currentInput && currentInput === words[wordIndex].en) {
-      setWord(wordIndex + 1)
-      clearInput()
-      this.playEnglishSound(words[wordIndex + 1].en)
-    }
   }
 
   render() {

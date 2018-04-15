@@ -1,9 +1,7 @@
 // @flow
-
-import type { Words } from '../types'
-
 import React from 'react'
 import Word from '../components/Word'
+import type { Words } from '../types'
 
 type Props = {
   words: Words,
@@ -21,7 +19,7 @@ const WordList = (props: Props) => {
 
         return (
           <Word
-            key={i}
+            key={word.en}
             en={word.en}
             ja={word.ja}
             isActive={isActive}

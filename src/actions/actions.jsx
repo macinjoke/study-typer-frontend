@@ -1,7 +1,6 @@
 // @flow
-import type { Action, ThunkAction, Words } from '../types'
-
 import config from 'config'
+import type { Action, ThunkAction, Words } from '../types'
 
 export const inputKey = (value: string): Action => ({
   type: 'INPUT_KEY',
@@ -45,22 +44,20 @@ export const errorFetchWords = (err: Object): Action => ({
   err,
 })
 
-export const fetchWords = (rank: number): ThunkAction => {
-  return async dispatch => {
-    const url = `http://${config.api_server.host}:${
-      config.api_server.port
-    }/api/words?rank=${rank}`
-    console.log(url)
-    try {
-      const res = await fetch(url, { mode: 'cors' })
-      if (res.ok) {
-        const json = await res.json()
-        dispatch(setWords(json))
-      } else {
-        dispatch(errorFetchWords(res))
-      }
-    } catch (err) {
-      dispatch(errorFetchWords(err))
+export const fetchWords = (rank: number): ThunkAction => async dispatch => {
+  const url = `http://${config.api_server.host}:${
+    config.api_server.port
+  }/api/words?rank=${rank}`
+  console.log(url)
+  try {
+    const res = await fetch(url, { mode: 'cors' })
+    if (res.ok) {
+      const json = await res.json()
+      dispatch(setWords(json))
+    } else {
+      dispatch(errorFetchWords(res))
     }
+  } catch (err) {
+    dispatch(errorFetchWords(err))
   }
 }

@@ -1,7 +1,7 @@
 // @flow
-type Exact<T> = T & $Shape<T>
-
 import type { Action, State } from '../types'
+
+type Exact<T> = T & $Shape<T>
 
 const initialState = {
   pushedKey: '',

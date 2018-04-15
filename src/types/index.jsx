@@ -1,5 +1,4 @@
 // @flow
-
 import type { Store as ReduxStore } from 'redux'
 
 export type Word = {
@@ -35,6 +34,8 @@ export type Store = ReduxStore<State, Action>
 
 export type GetState = () => State
 
+/* eslint no-use-before-define: 0  */
+// waiting resolve https://github.com/babel/babel-eslint/issues/485
 export type ThunkAction = (dispatch: Dispatch, getState: GetState) => any
 export type PromiseAction = Promise<Action>
 
