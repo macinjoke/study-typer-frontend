@@ -11,23 +11,20 @@ type Props = {
 }
 
 const Word = (props: Props) => {
-  return props.isActive ? (
+  const { en, ja, isActive, filledNum, missedNum } = props
+
+  return isActive ? (
     <li className="active">
-      <span className="filled">{props.en.slice(0, props.filledNum || 0)}</span>
+      <span className="filled">{en.slice(0, filledNum || 0)}</span>
       <span className="missed">
-        {props.en.slice(
-          props.filledNum || 0,
-          props.filledNum + props.missedNum,
-        )}
+        {en.slice(filledNum || 0, filledNum + missedNum)}
       </span>
-      <span className="unfilled">
-        {props.en.slice(props.filledNum + props.missedNum)}
-      </span>
-      <span> : {props.ja}</span>
+      <span className="unfilled">{en.slice(filledNum + missedNum)}</span>
+      <span> : {ja}</span>
     </li>
   ) : (
     <li className="inactive">
-      <span>{props.en}</span>
+      <span>{en}</span>
     </li>
   )
 }

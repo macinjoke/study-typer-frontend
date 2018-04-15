@@ -13,14 +13,11 @@ type Props = {
 }
 
 const WordList = (props: Props) => {
+  const { words, wordIndex, matchingIndex, currentInput } = props
   return (
     <ol className="wordList">
-      {props.words.map((word, i) => {
-        const isActive = props.wordIndex === i
-        const filledNum = isActive ? props.matchingIndex + 1 : null
-        const missedNum = isActive
-          ? props.currentInput.length - (props.matchingIndex + 1)
-          : null
+      {words.map((word, i) => {
+        const isActive = wordIndex === i
 
         return (
           <Word
@@ -28,8 +25,10 @@ const WordList = (props: Props) => {
             en={word.en}
             ja={word.ja}
             isActive={isActive}
-            filledNum={filledNum}
-            missedNum={missedNum}
+            filledNum={isActive ? matchingIndex + 1 : null}
+            missedNum={
+              isActive ? currentInput.length - (matchingIndex + 1) : null
+            }
           />
         )
       })}
