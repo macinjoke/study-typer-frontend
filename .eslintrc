@@ -6,7 +6,10 @@
   },
   "extends": [
     "airbnb",
-    "plugin:flowtype/recommended"
+    "plugin:flowtype/recommended",
+    "prettier",
+    "prettier/flowtype",
+    "prettier/react"
   ],
   "parserOptions": {
     "ecmaVersion": 6,
@@ -17,13 +20,11 @@
   },
   "plugins": [
     "react",
-    "flowtype"
+    "flowtype",
+    "prettier"
   ],
   "parser": "babel-eslint",
   "rules": {
-    "no-console": 1,
-    "semi": 0,
-    "arrow-parens": 0,
-    "object-curly-newline": 0
+    "no-console": 1
   }
 }
