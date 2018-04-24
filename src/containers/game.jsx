@@ -102,48 +102,35 @@ class Game extends React.Component<Props> {
       reset,
     } = this.props
     return (
-      <div className="game">
-        <EventListener onKeyDown={this.onKeyDown} target="window" />
-        {fetchError && (
-          <p style={{ color: 'red' }}>
-            エラーが起きました: {fetchError.status}
-          </p>
-        )}
-        <p>game</p>
-        {words && (
-          <WordList
-            words={words}
-            wordIndex={wordIndex}
-            matchingIndex={matchingIndex}
-            currentInput={currentInput}
+      <div className="game card">
+        <div className="card-body bg-light">
+          <EventListener onKeyDown={this.onKeyDown} target="window" />
+          {fetchError && (
+            <p style={{ color: 'red' }}>
+              エラーが起きました: {fetchError.status}
+            </p>
+          )}
+          {words && (
+            <WordList
+              words={words}
+              wordIndex={wordIndex}
+              matchingIndex={matchingIndex}
+              currentInput={currentInput}
+            />
+          )}
+          <span>Rank: </span>
+          <input
+            type="number"
+            name="rank"
+            min="0"
+            max="30"
+            onChange={this.handleRankChange}
+            value={rank}
           />
-        )}
-        <p>
-          pushedKey: <b>{pushedKey}</b>
-        </p>
-        <p>
-          currentWord: <b>{words.length > 0 && words[wordIndex].en}</b>
-        </p>
-        <p>
-          意味 <b>{words.length > 0 && words[wordIndex].ja}</b>
-        </p>
-        <p>
-          currentInput: <b>{currentInput}</b>
-        </p>
-        <button onClick={this.onClick}>clear</button>
-        <p>{matchingIndex}</p>
-        <span>rank: </span>
-        <input
-          type="number"
-          name="rank"
-          min="0"
-          max="30"
-          onChange={this.handleRankChange}
-          value={rank}
-        />
-        <p>
-          <button onClick={reset}>Reset</button>
-        </p>
+          <p>
+            <button onClick={reset}>Reset</button>
+          </p>
+        </div>
       </div>
     )
   }

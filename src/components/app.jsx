@@ -4,7 +4,7 @@ import Header from '../components/header'
 import Contents from '../components/contents'
 
 const App = () => (
-  <div>
+  <div className="container-fluid" id="app">
     <Header />
     <Contents />
   </div>

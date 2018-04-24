@@ -2,6 +2,7 @@
 import React from 'react'
 
 type Props = {
+  index: number,
   en: string,
   ja: string,
   isActive: boolean,
@@ -10,10 +11,11 @@ type Props = {
 }
 
 const Word = (props: Props) => {
-  const { en, ja, isActive, filledNum, missedNum } = props
+  const { index, en, ja, isActive, filledNum, missedNum } = props
 
   return isActive ? (
-    <li className="active">
+    <li className="active border border-primary">
+      <span className="index">{index}: </span>
       <span className="filled">{en.slice(0, filledNum || 0)}</span>
       <span className="missed">
         {en.slice(filledNum || 0, filledNum + missedNum)}
@@ -22,7 +24,8 @@ const Word = (props: Props) => {
       <span> : {ja}</span>
     </li>
   ) : (
-    <li className="inactive">
+    <li className="inactive text-muted">
+      <span className="index">{index}: </span>
       <span>{en}</span>
     </li>
   )
