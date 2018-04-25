@@ -3,7 +3,8 @@ import React from 'react'
 import EventListener from 'react-event-listener'
 import { connect } from 'react-redux'
 import * as actions from './../actions/actions'
-import WordList from '../components/WordList'
+import WordArea from '../components/WordArea'
+import type { Words } from '../types'
 
 type Props = {
   inputKey: (value: string) => void,
@@ -14,8 +15,8 @@ type Props = {
   setMatchingIndex: (index: number) => void,
   setRank: (value: number) => void,
   reset: () => void,
-  pushedKey: string,
-  words: any,
+  // pushedKey: string,
+  words: Words,
   wordIndex: number,
   matchingIndex: number,
   currentInput: string,
@@ -92,7 +93,6 @@ class Game extends React.Component<Props> {
 
   render() {
     const {
-      pushedKey,
       words,
       wordIndex,
       matchingIndex,
@@ -110,8 +110,8 @@ class Game extends React.Component<Props> {
               エラーが起きました: {fetchError.status}
             </p>
           )}
-          {words && (
-            <WordList
+          {words.length > 0 && (
+            <WordArea
               words={words}
               wordIndex={wordIndex}
               matchingIndex={matchingIndex}
