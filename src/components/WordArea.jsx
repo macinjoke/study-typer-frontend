@@ -14,14 +14,16 @@ type Props = {
 const WordArea = (props: Props) => {
   const { words, wordIndex, matchingIndex, currentInput } = props
   return (
-    <div className="wordArea">
-      <WordList
-        words={words}
-        wordIndex={wordIndex}
-        matchingIndex={matchingIndex}
-        currentInput={currentInput}
-      />
-      <JapaneseWord ja={words[wordIndex].ja} />
+    <div className="wordArea container-fluid">
+      <div className="row">
+        <WordList
+          words={words}
+          wordIndex={wordIndex}
+          matchingIndex={matchingIndex}
+          currentInput={currentInput}
+        />
+        <JapaneseWord ja={words[wordIndex].ja} />
+      </div>
     </div>
   )
 }

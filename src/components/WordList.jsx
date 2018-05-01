@@ -13,7 +13,7 @@ type Props = {
 const WordList = (props: Props) => {
   const { words, wordIndex, matchingIndex, currentInput } = props
   return (
-    <ol className="wordList list-unstyled">
+    <ol className="col-sm-auto wordList list-unstyled">
       {words.map((word, i) => {
         const isActive = wordIndex === i
 
@@ -22,7 +22,6 @@ const WordList = (props: Props) => {
             index={i}
             key={word.en}
             en={word.en}
-            ja={word.ja}
             isActive={isActive}
             filledNum={isActive ? matchingIndex + 1 : null}
             missedNum={

@@ -15,7 +15,6 @@ type Props = {
   setMatchingIndex: (index: number) => void,
   setRank: (value: number) => void,
   reset: () => void,
-  // pushedKey: string,
   words: Words,
   wordIndex: number,
   matchingIndex: number,
@@ -72,12 +71,6 @@ class Game extends React.Component<Props> {
     }
   }
 
-  onClick = e => {
-    const { clearInput } = this.props
-    e.preventDefault()
-    clearInput()
-  }
-
   playEnglishSound = en => {
     const audio: Audio = new Audio(`_my_gitignored/audio/${en}.flac`)
     audio.play()
@@ -118,18 +111,22 @@ class Game extends React.Component<Props> {
               currentInput={currentInput}
             />
           )}
-          <span>Rank: </span>
-          <input
-            type="number"
-            name="rank"
-            min="0"
-            max="30"
-            onChange={this.handleRankChange}
-            value={rank}
-          />
-          <p>
-            <button onClick={reset}>Reset</button>
-          </p>
+          <button className="btn btn-outline-primary mb-2" onClick={reset}>
+            Reset
+          </button>
+          <div className="input-group input-group">
+            <div className="input-group-prepend">
+              <span className="input-group-text">Rank: </span>
+            </div>
+            <input
+              type="number"
+              name="rank"
+              min="0"
+              max="30"
+              onChange={this.handleRankChange}
+              value={rank}
+            />
+          </div>
         </div>
       </div>
     )

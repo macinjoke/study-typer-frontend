@@ -7,7 +7,7 @@ type Props = {
 
 const JapaneseWord = (props: Props) => {
   const { ja } = props
-  return <p>{ja}</p>
+  return <p className="col-sm align-self-center">{ja}</p>
 }
 
 export default JapaneseWord
