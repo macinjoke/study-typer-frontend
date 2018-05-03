@@ -18,8 +18,10 @@ const Word = (props: Props) => {
         {index + 1 < 10 && <span className="text-monospace">&nbsp;</span>}
         {index + 1}:{' '}
       </span>
-      <span className="filled">{en.slice(0, filledNum || 0)}</span>
-      <span className="missed">
+      <span className="text-primary border-bottom border-primary">
+        {en.slice(0, filledNum || 0)}
+      </span>
+      <span className="text-warning border-bottom border-warning">
         {en.slice(filledNum || 0, filledNum + missedNum)}
       </span>
       <span className="unfilled">{en.slice(filledNum + missedNum)}</span>

@@ -95,38 +95,36 @@ class Game extends React.Component<Props> {
       reset,
     } = this.props
     return (
-      <div className="game card">
-        <div className="card-body bg-light">
-          <EventListener onKeyDown={this.onKeyDown} target="window" />
-          {fetchError && (
-            <p style={{ color: 'red' }}>
-              エラーが起きました: {fetchError.status}
-            </p>
-          )}
-          {words.length > 0 && (
-            <WordArea
-              words={words}
-              wordIndex={wordIndex}
-              matchingIndex={matchingIndex}
-              currentInput={currentInput}
-            />
-          )}
-          <button className="btn btn-outline-primary mb-2" onClick={reset}>
-            Reset
-          </button>
-          <div className="input-group input-group">
-            <div className="input-group-prepend">
-              <span className="input-group-text">Rank: </span>
-            </div>
-            <input
-              type="number"
-              name="rank"
-              min="0"
-              max="30"
-              onChange={this.handleRankChange}
-              value={rank}
-            />
+      <div className="game">
+        <EventListener onKeyDown={this.onKeyDown} target="window" />
+        {fetchError && (
+          <p style={{ color: 'red' }}>
+            エラーが起きました: {fetchError.status}
+          </p>
+        )}
+        {words.length > 0 && (
+          <WordArea
+            words={words}
+            wordIndex={wordIndex}
+            matchingIndex={matchingIndex}
+            currentInput={currentInput}
+          />
+        )}
+        <button className="btn btn-outline-primary mb-2" onClick={reset}>
+          Reset
+        </button>
+        <div className="input-group input-group">
+          <div className="input-group-prepend">
+            <span className="input-group-text">Rank: </span>
           </div>
+          <input
+            type="number"
+            name="rank"
+            min="0"
+            max="30"
+            onChange={this.handleRankChange}
+            value={rank}
+          />
         </div>
       </div>
     )

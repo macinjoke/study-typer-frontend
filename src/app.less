@@ -1,34 +1,44 @@
 #app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   padding-right: 0px;
   padding-left: 0px;
 }
 
+#title-panel {
+  flex: 9 1 auto;
+}
+
+#explanation {
+  font-size: 0.7rem;
+  flex: 1 1 auto;
+  background-color: #61676e;
+  padding: 1rem;
+  p {
+    text-indent: 1em;
+    margin: 0px;
+  }
+}
+
+.header {
+  background-color: black;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .contents {
-  //background: #f3ffe6;
+  padding-top: 2rem;
+  flex-grow: 1;
+
   .game {
     background: inherit;
-    border: none;
     ol.wordList {
-      @border-width: 2px;
       li {
-        ////ボーダーの幅も含めた高さを固定する方法
-        //box-sizing: border-box;
-        //height: 28px;
-        //&.active {
-        //  border-bottom: 2px solid black;
-        //}
-        padding-bottom: @border-width;
+        padding-bottom: 0.2rem;
+        padding-top: 0.2rem;
         &.active {
           background-color: #e6effa;
-          padding-bottom: 0px;
-          border-bottom: @border-width solid black;
-          span.filled {
-            color: blue;
-            border-bottom: 2px solid blue;
-          }
-          span.missed {
-            background: yellow;
-          }
         }
       }
     }
