@@ -6,29 +6,43 @@
   padding-left: 0px;
 }
 
-#title-panel {
-  flex: 9 1 auto;
-  #subtitle {
-    color: #eeeeee;
-  }
-}
-
-#explanation-panel {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: 0.7rem;
-  p {
-    text-indent: 1em;
-    margin: 0px;
-  }
-}
-
 .header {
   display: flex;
   flex-wrap: wrap;
   background: linear-gradient(90deg, #a3a9af, #61676e);
+
+  #title-panel {
+    flex: 9 1 auto;
+    #title-and-version {
+      display: flex;
+      #title {
+        margin: 0px;
+      }
+      #version {
+        margin: 0px 0px 0px 0.5rem;
+        align-self: flex-end;
+        font-size: 0.8rem;
+        color: #61676e;
+      }
+    }
+    #subtitle {
+      color: #eeeeee;
+      margin: 0px;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+  }
+  #explanation-panel {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 0.7rem;
+    p {
+      text-indent: 1em;
+      margin: 0px;
+    }
+  }
 }
 
 .contents {

@@ -4,7 +4,10 @@ import React from 'react'
 const Header = () => (
   <div className="header">
     <div id="title-panel">
-      <h3>Study Typer</h3>
+      <div id="title-and-version">
+        <h3 id="title">Study Typer</h3>
+        <p id="version">ver 1.0.0</p>
+      </div>
       <p id="subtitle">Typing game for English study</p>
     </div>
     <div id="explanation-panel" className="text-white font-weight-light">
