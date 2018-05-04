@@ -2,10 +2,10 @@
 import React from 'react'
 
 const Header = () => (
-  <div className="header bg-secondary">
+  <div className="header">
     <div id="title-panel">
-      <h3 className="card-title">Study Typer</h3>
-      <p className="card-subtitle text-white">Typing game for English study</p>
+      <h3>Study Typer</h3>
+      <p id="subtitle">Typing game for English study</p>
     </div>
     <div id="explanation-panel" className="text-white font-weight-light">
       <p>英語勉強のためのタイピングゲームです</p>

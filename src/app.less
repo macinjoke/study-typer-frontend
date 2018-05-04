@@ -8,6 +8,9 @@
 
 #title-panel {
   flex: 9 1 auto;
+  #subtitle {
+    color: #eeeeee;
+  }
 }
 
 #explanation-panel {
@@ -16,7 +19,6 @@
   flex-direction: column;
   justify-content: center;
   font-size: 0.7rem;
-  background-color: #61676e;
   p {
     text-indent: 1em;
     margin: 0px;
@@ -24,9 +26,9 @@
 }
 
 .header {
-  background-color: black;
   display: flex;
   flex-wrap: wrap;
+  background: linear-gradient(90deg, #a3a9af, #61676e);
 }
 
 .contents {
@@ -45,4 +47,8 @@
       }
     }
   }
+}
+
+.footer {
+  background: linear-gradient(90deg, #000000, #686868)
 }

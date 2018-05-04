@@ -3,7 +3,7 @@ import React from 'react'
 
 const Footer = () => (
   <div className="footer card">
-    <div className="card-body bg-dark text-white">
+    <div className="card-body text-white">
       <h4 className="card-title">
         Author: <a href="https://twitter.com/macinjoke">@macinjoke</a>
       </h4>
