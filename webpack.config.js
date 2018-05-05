@@ -3,7 +3,7 @@ const config = require('config')
 
 module.exports = {
   entry: {
-    app: ['babel-polyfill', './src/index.jsx'],
+    app: ['babel-polyfill', './src/index.js'],
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -14,7 +14,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /.jsx?$/,
+        test: /.js?$/,
         use: 'babel-loader',
         exclude: /node_modules/,
       },
@@ -29,7 +29,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js'],
   },
   devServer: {
     host: config.dev_server.host,
