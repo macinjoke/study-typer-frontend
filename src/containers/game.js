@@ -33,9 +33,9 @@ class Game extends React.Component<Props> {
   componentWillReceiveProps(nextProps) {
     const { setWord, clearInput, currentInput, words, wordIndex } = nextProps
     if (currentInput && currentInput === words[wordIndex].en) {
-      setWord(wordIndex + 1)
+      setWord((wordIndex + 1) % 10)
       clearInput()
-      this.playEnglishSound(words[wordIndex + 1].en)
+      this.playEnglishSound(words[(wordIndex + 1) % 10].en)
     }
   }
 
