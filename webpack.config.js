@@ -28,9 +28,6 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-    extensions: ['.js'],
-  },
   devServer: {
     host: config.dev_server.host,
     port: config.dev_server.port,
