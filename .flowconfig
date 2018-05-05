@@ -9,7 +9,6 @@
 
 [options]
 module.file_ext=.js
-module.file_ext=.jsx
 module.file_ext=.less
 
 [strict]
