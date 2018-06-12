@@ -17,7 +17,7 @@
       "git add"
     ]
   },
-  "author": "makky",
+  "author": "macinjoke",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.25.0",
