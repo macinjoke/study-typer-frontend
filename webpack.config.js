@@ -6,7 +6,7 @@ module.exports = {
     app: ['babel-polyfill', './src/index.js'],
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist/assets'),
     publicPath: '/assets/',
     filename: 'bundle.js',
   },
@@ -32,6 +32,7 @@ module.exports = {
     host: config.dev_server.host,
     port: config.dev_server.port,
     disableHostCheck: true,
+    contentBase: 'dist',
   },
   externals: {
     config: JSON.stringify(config.frontend),

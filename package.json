@@ -8,7 +8,9 @@
     "lint": "eslint src",
     "test": "yarn run lint",
     "flow": "flow",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "webpack": "webpack",
+    "webpack-prod": "NODE_ENV=production webpack"
   },
   "lint-staged": {
     "*.js": [
