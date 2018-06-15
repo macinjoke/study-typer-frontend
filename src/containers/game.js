@@ -1,4 +1,5 @@
 // @flow
+import config from 'config'
 import React from 'react'
 import EventListener from 'react-event-listener'
 import { connect } from 'react-redux'
@@ -72,7 +73,7 @@ class Game extends React.Component<Props> {
   }
 
   playEnglishSound = en => {
-    const audio: Audio = new Audio(`assets/audio/${en}.flac`)
+    const audio: Audio = new Audio(`${config.assets}audio/${en}.flac`)
     audio.play()
   }
 
