@@ -72,7 +72,7 @@ class Game extends React.Component<Props> {
   }
 
   playEnglishSound = en => {
-    const audio: Audio = new Audio(`_my_gitignored/audio/${en}.flac`)
+    const audio: Audio = new Audio(`assets/audio/${en}.flac`)
     audio.play()
   }
 
