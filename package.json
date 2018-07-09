@@ -3,14 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "mode": "development",
   "scripts": {
     "start": "webpack-dev-server --content-base dist",
     "lint": "eslint src",
     "test": "yarn run lint",
     "flow": "flow",
     "precommit": "lint-staged",
-    "webpack": "webpack",
-    "webpack-prod": "NODE_ENV=production webpack"
+    "webpack": "webpack --mode development",
+    "webpack-prod": "webpack --mode production"
   },
   "lint-staged": {
     "*.js": [
@@ -47,7 +48,8 @@
     "lint-staged": "^7.0.4",
     "prettier": "^1.12.0",
     "style-loader": "^0.18.2",
-    "webpack": "^2.6.1",
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
