@@ -5,7 +5,7 @@
   "main": "index.js",
   "mode": "development",
   "scripts": {
-    "start": "webpack-dev-server --content-base dist",
+    "start": "webpack-dev-server --mode development --content-base dist",
     "lint": "eslint src",
     "test": "yarn run lint",
     "flow": "flow",
@@ -50,7 +50,7 @@
     "style-loader": "^0.18.2",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8",
-    "webpack-dev-server": "^2.4.5"
+    "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
     "bootstrap": "^4.1.0",
