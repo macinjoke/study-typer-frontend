@@ -11,7 +11,7 @@
     "flow": "flow",
     "precommit": "lint-staged",
     "webpack": "webpack --mode development",
-    "webpack-prod": "webpack --mode production"
+    "webpack-prod": "NODE_ENV=production webpack --mode production"
   },
   "lint-staged": {
     "*.js": [
