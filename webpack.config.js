@@ -1,6 +1,7 @@
 const path = require('path')
 const config = require('config')
 
+config.frontend.version = process.env.npm_package_version
 module.exports = {
   entry: {
     app: ['babel-polyfill', './src/index.js'],
