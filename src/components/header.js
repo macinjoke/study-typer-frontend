@@ -1,12 +1,13 @@
 // @flow
 import React from 'react'
+import config from 'config'
 
 const Header = () => (
   <div className="header">
     <div id="title-panel">
       <div id="title-and-version">
         <h3 id="title">Study Typer</h3>
-        <p id="version">ver 1.0.0</p>
+        <p id="version">{config.version}</p>
       </div>
       <p id="subtitle">Typing game for English study</p>
     </div>
