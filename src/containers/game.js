@@ -5,7 +5,7 @@ import EventListener from 'react-event-listener'
 import { connect } from 'react-redux'
 import * as actions from './../actions/actions'
 import WordArea from '../components/WordArea'
-import type { Words } from '../types'
+import type { State } from '../types'
 
 type Props = {
   inputKey: (value: string) => void,
@@ -16,19 +16,12 @@ type Props = {
   setMatchingIndex: (index: number) => void,
   setRank: (value: number) => void,
   reset: () => void,
-  words: Words,
-  wordIndex: number,
-  matchingIndex: number,
-  currentInput: string,
-  rank: number,
-  fetchError: Object,
-}
+} & State
 
 class Game extends React.Component<Props> {
   componentWillMount() {
-    const { fetchWords, setRank } = this.props
+    const { fetchWords } = this.props
     fetchWords(1)
-    setRank(1)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -41,6 +34,9 @@ class Game extends React.Component<Props> {
   }
 
   onKeyDown = (e: SyntheticKeyboardEvent<>) => {
+    if (document.activeElement.tagName === 'INPUT') {
+      return
+    }
     const {
       setMatchingIndex,
       backChar,
@@ -50,7 +46,6 @@ class Game extends React.Component<Props> {
       words,
       wordIndex,
     } = this.props
-
     const currentWord = words[wordIndex].en
     if (
       matchingIndex === currentInput.length - 1 &&
@@ -78,10 +73,25 @@ class Game extends React.Component<Props> {
   }
 
   handleRankChange = e => {
-    const { setRank, fetchWords, reset } = this.props
+    const { setRank } = this.props
     const rank = Number(e.target.value)
-    reset()
     setRank(rank)
+  }
+
+  handleFocus = e => {
+    e.target.select()
+  }
+
+  okd = e => {
+    const { fetchWords, rank, isFetching } = this.props
+    if (e.key === 'Enter' && !isFetching) {
+      e.target.blur()
+      fetchWords(rank)
+    }
+  }
+
+  onClick = () => {
+    const { fetchWords, rank } = this.props
     fetchWords(rank)
   }
 
@@ -91,9 +101,8 @@ class Game extends React.Component<Props> {
       wordIndex,
       matchingIndex,
       currentInput,
-      rank,
       fetchError,
-      reset,
+      isFetching,
     } = this.props
     return (
       <div className="game">
@@ -111,9 +120,6 @@ class Game extends React.Component<Props> {
             currentInput={currentInput}
           />
         )}
-        <button className="btn btn-outline-primary mb-2" onClick={reset}>
-          Reset
-        </button>
         <div className="input-group input-group">
           <div className="input-group-prepend">
             <span className="input-group-text">Rank: </span>
@@ -121,11 +127,20 @@ class Game extends React.Component<Props> {
           <input
             type="number"
             name="rank"
-            min="0"
+            min="1"
             max="30"
             onChange={this.handleRankChange}
-            value={rank}
+            onFocus={this.handleFocus}
+            onKeyDown={this.okd}
+            defaultValue="1"
           />
+          <button
+            className="btn btn-outline-primary mb-2"
+            onClick={this.onClick}
+            disabled={isFetching}
+          >
+            {isFetching ? 'Loading...' : 'Update'}
+          </button>
         </div>
       </div>
     )

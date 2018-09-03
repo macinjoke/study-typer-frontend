@@ -30,17 +30,17 @@ export const setRank = (value: number): Action => ({
   value,
 })
 
-export const reset = (): Action => ({
-  type: 'RESET',
+export const fetchWordsRequest = (): Action => ({
+  type: 'FETCH_WORDS_REQUEST',
 })
 
-export const setWords = (words: Words): Action => ({
-  type: 'SET_WORDS',
+export const fetchWordsSuccess = (words: Words): Action => ({
+  type: 'FETCH_WORDS_SUCCESS',
   words,
 })
 
-export const errorFetchWords = (err: Object): Action => ({
-  type: 'ERROR_FETCH_WORDS',
+export const fetchWordsError = (err: Object): Action => ({
+  type: 'FETCH_WORDS_ERROR',
   err,
 })
 
@@ -49,15 +49,16 @@ export const fetchWords = (rank: number): ThunkAction => async dispatch => {
     config.api_server.port
   }/api/words?rank=${rank}`
   console.log(url)
+  dispatch(fetchWordsRequest())
   try {
     const res = await fetch(url, { mode: 'cors' })
     if (res.ok) {
       const json = await res.json()
-      dispatch(setWords(json))
+      dispatch(fetchWordsSuccess(json))
     } else {
-      dispatch(errorFetchWords(res))
+      dispatch(fetchWordsError(res))
     }
   } catch (err) {
-    dispatch(errorFetchWords(err))
+    dispatch(fetchWordsError(err))
   }
 }

@@ -9,7 +9,8 @@ const initialState = {
   wordIndex: 0,
   matchingIndex: -1,
   currentInput: '',
-  rank: 0,
+  rank: 1,
+  isFetching: false,
   fetchError: null,
 }
 
@@ -40,21 +41,18 @@ const reducer = (
     case 'SET_RANK': {
       return { ...state, rank: action.value }
     }
-    case 'RESET': {
-      return {
-        ...state,
-        pushedKey: '',
-        wordIndex: 0,
-        matchingIndex: -1,
-        currentInput: '',
-      }
-    }
     case 'SET_WORDS': {
-      return { ...state, words: action.words }
+      return { ...state, words: action.words, wordIndex: 0 }
     }
-    case 'ERROR_FETCH_WORDS': {
+    case 'FETCH_WORDS_REQUEST': {
+      return { ...state, isFetching: true }
+    }
+    case 'FETCH_WORDS_SUCCESS': {
+      return { ...state, isFetching: false, words: action.words, wordIndex: 0 }
+    }
+    case 'FETCH_WORDS_ERROR': {
       console.log(action.err)
-      return { ...state, fetchError: action.err }
+      return { ...state, isFetching: false, fetchError: action.err }
     }
     default: {
       return state

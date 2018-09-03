@@ -17,8 +17,9 @@ export type Action =
   | { type: 'BACK_CHAR' }
   | { type: 'SET_MATCHING_INDEX', index: number }
   | { type: 'SET_RANK', value: number }
-  | { type: 'RESET' }
-  | { type: 'ERROR_FETCH_WORDS', err: Object }
+  | { type: 'FETCH_WORDS_REQUEST' }
+  | { type: 'FETCH_WORDS_SUCCESS', words: Words }
+  | { type: 'FETCH_WORDS_ERROR', err: Object }
 
 export type State = {
   pushedKey: string,
@@ -27,6 +28,7 @@ export type State = {
   matchingIndex: number,
   currentInput: string,
   rank: number,
+  isFetching: boolean,
   fetchError: ?Object,
 }
 
