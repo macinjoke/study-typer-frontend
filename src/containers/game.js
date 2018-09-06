@@ -33,8 +33,9 @@ class Game extends React.Component<Props> {
     }
   }
 
-  onKeyDown = (e: SyntheticKeyboardEvent<>) => {
-    if (document.activeElement.tagName === 'INPUT') {
+  onKeyDown = (e: SyntheticKeyboardEvent<HTMLButtonElement>) => {
+    const { activeElement } = document
+    if (activeElement && activeElement.tagName === 'INPUT') {
       return
     }
     const {
