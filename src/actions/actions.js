@@ -43,7 +43,6 @@ export const fetchWords = (rank: number): ThunkAction => async dispatch => {
   const url = `http://${config.api_server.host}:${
     config.api_server.port
   }/api/words?rank=${rank}`
-  console.log(url)
   dispatch(fetchWordsRequest())
   try {
     const res = await fetch(url, { mode: 'cors' })

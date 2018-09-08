@@ -48,7 +48,6 @@ const reducer = (
       }
     }
     case 'FETCH_WORDS_ERROR': {
-      console.log(action.err)
       return { ...state, isFetching: false, fetchError: action.err }
     }
     default: {
