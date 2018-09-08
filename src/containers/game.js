@@ -136,7 +136,7 @@ class Game extends React.Component<Props> {
             defaultValue="1"
           />
           <button
-            className="btn btn-outline-primary mb-2"
+            className="btn btn-outline-primary"
             onClick={this.onClick}
             disabled={isFetching}
           >
