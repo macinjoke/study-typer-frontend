@@ -12,7 +12,6 @@ export type Words = Array<Word>
 export type Action =
   | { type: 'INPUT_KEY', +value: string }
   | { type: 'CLEAR_INPUT' }
-  | { type: 'SET_WORDS', words: Words }
   | { type: 'SET_WORD', index: number }
   | { type: 'BACK_CHAR' }
   | { type: 'SET_MATCHING_INDEX', index: number }

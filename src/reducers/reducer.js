@@ -41,9 +41,6 @@ const reducer = (
     case 'SET_RANK': {
       return { ...state, rank: action.value }
     }
-    case 'SET_WORDS': {
-      return { ...state, words: action.words, wordIndex: 0 }
-    }
     case 'FETCH_WORDS_REQUEST': {
       return { ...state, isFetching: true }
     }
