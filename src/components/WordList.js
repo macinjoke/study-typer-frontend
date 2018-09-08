@@ -12,13 +12,13 @@ type Props = {
 const WordList = (props: Props) => {
   const { words, wordIndex, currentInput } = props
   const currentWord = words[wordIndex].en
-  const findUnMatch = (input: string) => {
-    for (let i = 0; i < input.length; i += 1) {
-      if (input[i] !== currentWord[i]) {
+  const findUnMatch = (str: string) => {
+    for (let i = 0; i < str.length; i += 1) {
+      if (str[i] !== currentWord[i]) {
         return i
       }
     }
-    return input.length
+    return str.length
   }
   const unMatchIndex = findUnMatch(currentInput)
   return (
