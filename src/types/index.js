@@ -21,7 +21,6 @@ export type Action =
   | { type: 'FETCH_WORDS_ERROR', err: Object }
 
 export type State = {
-  pushedKey: string,
   words: Words,
   wordIndex: number,
   matchingIndex: number,

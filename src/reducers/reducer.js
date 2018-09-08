@@ -4,7 +4,6 @@ import type { Action, State } from '../types'
 type Exact<T> = T & $Shape<T>
 
 const initialState = {
-  pushedKey: '',
   words: [],
   wordIndex: 0,
   matchingIndex: -1,
@@ -22,7 +21,6 @@ const reducer = (
     case 'INPUT_KEY': {
       return {
         ...state,
-        pushedKey: action.value,
         currentInput: state.currentInput + action.value,
       }
     }
