@@ -33,7 +33,7 @@ class Game extends React.Component<Props> {
     }
   }
 
-  onKeyDown = (e: SyntheticKeyboardEvent<HTMLButtonElement>) => {
+  onKeyDown = (e: SyntheticKeyboardEvent<HTMLBodyElement>) => {
     const { activeElement } = document
     if (activeElement && activeElement.tagName === 'INPUT') {
       return
@@ -68,22 +68,7 @@ class Game extends React.Component<Props> {
     }
   }
 
-  playEnglishSound = en => {
-    const audio: Audio = new Audio(`${config.assets}audio/${en}.flac`)
-    audio.play()
-  }
-
-  handleRankChange = e => {
-    const { setRank } = this.props
-    const rank = Number(e.target.value)
-    setRank(rank)
-  }
-
-  handleFocus = e => {
-    e.target.select()
-  }
-
-  okd = e => {
+  onKeyDownRank = e => {
     const { fetchWords, rank, isFetching } = this.props
     if (e.key === 'Enter' && !isFetching) {
       e.target.blur()
@@ -94,6 +79,21 @@ class Game extends React.Component<Props> {
   onClick = () => {
     const { fetchWords, rank } = this.props
     fetchWords(rank)
+  }
+
+  onFocus = e => {
+    e.target.select()
+  }
+
+  onChangeRank = (e: SyntheticInputEvent<>) => {
+    const { setRank } = this.props
+    const rank = Number(e.target.value)
+    setRank(rank)
+  }
+
+  playEnglishSound = en => {
+    const audio: Audio = new Audio(`${config.assets}audio/${en}.flac`)
+    audio.play()
   }
 
   render() {
@@ -130,9 +130,9 @@ class Game extends React.Component<Props> {
             name="rank"
             min="1"
             max="30"
-            onChange={this.handleRankChange}
-            onFocus={this.handleFocus}
-            onKeyDown={this.okd}
+            onChange={this.onChangeRank}
+            onFocus={this.onFocus}
+            onKeyDown={this.onKeyDownRank}
             defaultValue="1"
           />
           <button
