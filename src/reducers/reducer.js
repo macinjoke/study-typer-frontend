@@ -45,7 +45,14 @@ const reducer = (
       return { ...state, isFetching: true }
     }
     case 'FETCH_WORDS_SUCCESS': {
-      return { ...state, isFetching: false, words: action.words, wordIndex: 0 }
+      return {
+        ...state,
+        isFetching: false,
+        words: action.words,
+        wordIndex: 0,
+        currentInput: '',
+        matchingIndex: -1,
+      }
     }
     case 'FETCH_WORDS_ERROR': {
       console.log(action.err)
