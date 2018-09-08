@@ -91,7 +91,7 @@ class Game extends React.Component<Props> {
     setRank(rank)
   }
 
-  playEnglishSound = en => {
+  playEnglishSound = (en: string) => {
     const audio: Audio = new Audio(`${config.assets}audio/${en}.flac`)
     audio.play()
   }
