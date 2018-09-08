@@ -9,14 +9,13 @@
     "lint": "eslint src",
     "test": "yarn run lint",
     "flow": "flow",
-    "precommit": "lint-staged",
+    "precommit": "flow && lint-staged",
     "webpack": "webpack --mode development",
     "webpack-prod": "NODE_ENV=production webpack --mode production"
   },
   "lint-staged": {
     "*.js": [
       "eslint --fix",
-      "flow",
       "git add"
     ]
   },
