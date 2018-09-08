@@ -23,7 +23,6 @@ export type Action =
 export type State = {
   words: Words,
   wordIndex: number,
-  matchingIndex: number,
   currentInput: string,
   rank: number,
   isFetching: boolean,

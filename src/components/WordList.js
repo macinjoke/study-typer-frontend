@@ -6,12 +6,21 @@ import type { Words } from '../types'
 type Props = {
   words: Words,
   wordIndex: number,
-  matchingIndex: number,
   currentInput: string,
 }
 
 const WordList = (props: Props) => {
-  const { words, wordIndex, matchingIndex, currentInput } = props
+  const { words, wordIndex, currentInput } = props
+  const currentWord = words[wordIndex].en
+  function findUnMatch(input: string) {
+    for (let i = 0; i < input.length; i += 1) {
+      if (input[i] !== currentWord[i]) {
+        return i
+      }
+    }
+    return input.length
+  }
+  const unMatchIndex = findUnMatch(currentInput)
   return (
     <ol className="col-sm-auto wordList list-unstyled">
       {words.map((word, i) => {
@@ -23,10 +32,8 @@ const WordList = (props: Props) => {
             key={word.en}
             en={word.en}
             isActive={isActive}
-            filledNum={isActive ? matchingIndex + 1 : null}
-            missedNum={
-              isActive ? currentInput.length - (matchingIndex + 1) : null
-            }
+            filledNum={isActive ? unMatchIndex : null}
+            missedNum={isActive ? currentInput.length - unMatchIndex : null}
           />
         )
       })}

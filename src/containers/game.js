@@ -13,7 +13,6 @@ type Props = {
   fetchWords: (rank: number) => Promise<any>,
   setWord: (index: number) => void,
   backChar: () => void,
-  setMatchingIndex: (index: number) => void,
   setRank: (value: number) => void,
   reset: () => void,
 } & State
@@ -38,26 +37,8 @@ class Game extends React.Component<Props> {
     if (activeElement && activeElement.tagName === 'INPUT') {
       return
     }
-    const {
-      setMatchingIndex,
-      backChar,
-      inputKey,
-      currentInput,
-      matchingIndex,
-      words,
-      wordIndex,
-    } = this.props
-    const currentWord = words[wordIndex].en
-    if (
-      matchingIndex === currentInput.length - 1 &&
-      e.key === currentWord[matchingIndex + 1]
-    ) {
-      setMatchingIndex(matchingIndex + 1)
-    }
+    const { backChar, inputKey, currentInput } = this.props
     if (e.key === 'Backspace' && currentInput.length > 0) {
-      if (matchingIndex === currentInput.length - 1) {
-        setMatchingIndex(matchingIndex - 1)
-      }
       backChar()
     } else if (e.key.length === 1) {
       inputKey(e.key)
@@ -100,7 +81,6 @@ class Game extends React.Component<Props> {
     const {
       words,
       wordIndex,
-      matchingIndex,
       currentInput,
       fetchError,
       isFetching,
@@ -117,7 +97,6 @@ class Game extends React.Component<Props> {
           <WordArea
             words={words}
             wordIndex={wordIndex}
-            matchingIndex={matchingIndex}
             currentInput={currentInput}
           />
         )}

@@ -20,11 +20,6 @@ export const backChar = (): Action => ({
   type: 'BACK_CHAR',
 })
 
-export const setMatchingIndex = (index: number): Action => ({
-  type: 'SET_MATCHING_INDEX',
-  index,
-})
-
 export const setRank = (value: number): Action => ({
   type: 'SET_RANK',
   value,
