@@ -49,10 +49,10 @@ class Game extends React.Component<Props> {
     }
   }
 
-  onKeyDownRank = e => {
+  onKeyDownRank = (e: SyntheticKeyboardEvent<HTMLInputElement>) => {
     const { fetchWords, rank, isFetching } = this.props
     if (e.key === 'Enter' && !isFetching) {
-      e.target.blur()
+      e.currentTarget.blur()
       fetchWords(rank)
     }
   }
@@ -62,13 +62,13 @@ class Game extends React.Component<Props> {
     fetchWords(rank)
   }
 
-  onFocus = e => {
-    e.target.select()
+  onFocus = (e: SyntheticFocusEvent<HTMLInputElement>) => {
+    e.currentTarget.select()
   }
 
-  onChangeRank = (e: SyntheticInputEvent<>) => {
+  onChangeRank = (e: SyntheticInputEvent<HTMLInputElement>) => {
     const { setRank } = this.props
-    const rank = Number(e.target.value)
+    const rank = Number(e.currentTarget.value)
     setRank(rank)
   }
 
