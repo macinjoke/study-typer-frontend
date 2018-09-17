@@ -3,7 +3,7 @@ import type { Action, State } from '../types'
 
 type Exact<T> = T & $Shape<T>
 
-const initialState = {
+export const initialState = {
   words: [],
   wordIndex: 0,
   currentInput: '',
