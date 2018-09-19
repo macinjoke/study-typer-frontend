@@ -7,15 +7,6 @@ export const inputKey = (value: string): Action => ({
   value,
 })
 
-export const clearInput = (): Action => ({
-  type: 'CLEAR_INPUT',
-})
-
-export const setWord = (index: number): Action => ({
-  type: 'SET_WORD',
-  index,
-})
-
 export const backChar = (): Action => ({
   type: 'BACK_CHAR',
 })

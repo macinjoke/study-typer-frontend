@@ -13,33 +13,36 @@ test('no action match', () => {
   expect(reducer(initialState, { type: 'foobarbaz' })).toEqual(initialState)
 })
 
-test('INPUT_KEY action でcurrentInput に1文字追加する', () => {
-  const beforeState = {
-    ...initialState,
-    currentInput: 'hoge',
-  }
-  expect(reducer(beforeState, actions.inputKey('j'))).toEqual({
-    ...beforeState,
-    currentInput: 'hogej',
+describe('INPUT_KEY action', () => {
+  const words = [
+    { en: 'alice', ja: 'アリス', rank: 1 },
+    { en: 'bob', ja: 'ボブ', rank: 1 },
+    { en: 'charlie', ja: 'チャーリー', rank: 1 },
+  ]
+  it('1文字追加する', () => {
+    const beforeState = {
+      ...initialState,
+      words,
+      wordIndex: 1,
+      currentInput: 'b',
+    }
+    expect(reducer(beforeState, actions.inputKey('o'))).toEqual({
+      ...beforeState,
+      currentInput: 'bo',
+    })
   })
-})
-
-test('CLEAR_INPUT action でcurrentInput が空文字になる', () => {
-  const beforeState = {
-    ...initialState,
-    currentInput: 'hoge',
-  }
-  expect(reducer(beforeState, actions.clearInput())).toEqual({
-    ...beforeState,
-    currentInput: '',
-  })
-})
-
-test('SET_WORD action でwordIndex の値が変わる', () => {
-  const beforeState = initialState
-  expect(reducer(beforeState, actions.setWord(3))).toEqual({
-    ...beforeState,
-    wordIndex: 3,
+  it('英単語と入力が一致したなら次の単語へ進む', () => {
+    const beforeState = {
+      ...initialState,
+      words,
+      wordIndex: 1,
+      currentInput: 'bo',
+    }
+    expect(reducer(beforeState, actions.inputKey('b'))).toEqual({
+      ...beforeState,
+      wordIndex: 2,
+      currentInput: '',
+    })
   })
 })
 

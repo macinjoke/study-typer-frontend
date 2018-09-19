@@ -18,16 +18,17 @@ const reducer = (
 ): Exact<State> => {
   switch (action.type) {
     case 'INPUT_KEY': {
-      return {
-        ...state,
-        currentInput: state.currentInput + action.value,
-      }
-    }
-    case 'CLEAR_INPUT': {
-      return { ...state, currentInput: '' }
-    }
-    case 'SET_WORD': {
-      return { ...state, wordIndex: action.index }
+      return state.currentInput + action.value ===
+        state.words[state.wordIndex].en
+        ? {
+            ...state,
+            currentInput: '',
+            wordIndex: state.wordIndex + 1,
+          }
+        : {
+            ...state,
+            currentInput: state.currentInput + action.value,
+          }
     }
     case 'BACK_CHAR': {
       return { ...state, currentInput: state.currentInput.slice(0, -1) }

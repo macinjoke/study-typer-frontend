@@ -9,9 +9,7 @@ import type { State } from '../types'
 
 type Props = {
   inputKey: (value: string) => void,
-  clearInput: () => void,
   fetchWords: (rank: number) => Promise<any>,
-  setWord: (index: number) => void,
   backChar: () => void,
   setRank: (value: number) => void,
   reset: () => void,
@@ -23,12 +21,9 @@ class Game extends React.Component<Props> {
     fetchWords(1)
   }
 
-  componentWillReceiveProps(nextProps: Props) {
-    const { setWord, clearInput, currentInput, words, wordIndex } = nextProps
-    if (currentInput && currentInput === words[wordIndex].en) {
-      setWord((wordIndex + 1) % 10)
-      clearInput()
-      this.playEnglishSound(words[(wordIndex + 1) % 10].en)
+  componentDidUpdate(prevProps: Props) {
+    if (prevProps.wordIndex === this.props.wordIndex - 1) {
+      this.playEnglishSound(this.props.words[this.props.wordIndex].en)
     }
   }
 
