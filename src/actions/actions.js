@@ -34,7 +34,7 @@ export const fetchWordsSuccess = (words: Words): Action => ({
   words,
 })
 
-export const fetchWordsError = (err: Object): Action => ({
+export const fetchWordsError = (err: Response): Action => ({
   type: 'FETCH_WORDS_ERROR',
   err,
 })

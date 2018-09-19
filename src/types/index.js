@@ -26,7 +26,7 @@ export type State = {
   currentInput: string,
   rank: number,
   isFetching: boolean,
-  fetchError: ?Object,
+  fetchError: ?Response,
 }
 
 export type Store = ReduxStore<State, Action>
