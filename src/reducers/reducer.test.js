@@ -1,3 +1,5 @@
+// @flow
+
 import reducer, { initialState } from './reducer'
 import * as actions from '../actions/actions'
 
@@ -78,7 +80,7 @@ test('FETCH_WORDS_SUCCESS action', () => {
 
 test('FETCH_WORDS_ERROR action', () => {
   const beforeState = { ...initialState, isFetching: true }
-  const err = { status: 503 }
+  const err: any = { status: 503 }
   const afterState = reducer(beforeState, actions.fetchWordsError(err))
   expect(afterState).toEqual({
     ...beforeState,

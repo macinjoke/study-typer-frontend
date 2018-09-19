@@ -14,9 +14,14 @@
     "webpack-prod": "NODE_ENV=production webpack --mode production"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
+    "linters": {
+      "*.js": [
+        "eslint --fix",
+        "git add"
+      ]
+    },
+    "ignore": [
+      "flow-typed/**/*.js"
     ]
   },
   "author": "macinjoke",
