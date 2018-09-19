@@ -3,6 +3,16 @@
 import reducer, { initialState } from './reducer'
 import * as actions from '../actions/actions'
 
+test('@@INIT', () => {
+  // $FlowFixMe
+  expect(reducer(undefined, { type: '@@INIT' })).toEqual(initialState)
+})
+
+test('no action match', () => {
+  // $FlowFixMe
+  expect(reducer(initialState, { type: 'foobarbaz' })).toEqual(initialState)
+})
+
 test('INPUT_KEY action でcurrentInput に1文字追加する', () => {
   const beforeState = {
     ...initialState,
