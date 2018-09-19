@@ -23,7 +23,7 @@ class Game extends React.Component<Props> {
     fetchWords(1)
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: Props) {
     const { setWord, clearInput, currentInput, words, wordIndex } = nextProps
     if (currentInput && currentInput === words[wordIndex].en) {
       setWord((wordIndex + 1) % 10)
