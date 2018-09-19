@@ -1,5 +1,6 @@
 node_modules/
 /dist/assets
+/coverage
 
 config/*
 !config/default.yml
