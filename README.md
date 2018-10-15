@@ -5,7 +5,12 @@ WebタイピングゲームをReactで作る。
 
 backend: https://github.com/makky05/study-typer-backend
 
-# 途中経過
+# Welcome Contribution
+ご意見や、機能のリクエスト、バグ報告など Issue にてお待ちしています。 もしくは [@macinjoke](https://twitter.com/macinjoke) まで。
+Pull Request も Welcome です。 (バックエンドのほうもwelcomeですがIssue は全てフロントの方にお願いします)
+
+
+# 概要
 
 ![study typer demo](https://raw.githubusercontent.com/wiki/makky05/study-typer-backend/images/typing_demo.gif)
 
