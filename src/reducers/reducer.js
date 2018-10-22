@@ -1,8 +1,6 @@
 // @flow
 import type { Action, State } from '../types'
 
-type Exact<T> = T & $Shape<T>
-
 export const initialState = {
   words: [],
   wordIndex: 0,
@@ -13,9 +11,9 @@ export const initialState = {
 }
 
 const reducer = (
-  state: Exact<State> = initialState,
+  state: $Exact<State> = initialState,
   action: Action,
-): Exact<State> => {
+): $Exact<State> => {
   switch (action.type) {
     case 'INPUT_KEY': {
       return state.currentInput + action.value ===

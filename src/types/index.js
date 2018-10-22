@@ -27,7 +27,7 @@ export type State = {
   fetchError: ?Response,
 }
 
-export type Store = ReduxStore<State, Action>
+export type Store = ReduxStore<$Exact<State>, Action>
 
 export type GetState = () => State
 
