@@ -7,7 +7,16 @@ type Props = {
 
 const JapaneseWord = (props: Props) => {
   const { ja } = props
-  return <p className="col-sm align-self-center">{ja}</p>
+  // TODO ------- This is hotfix ------
+  const sentences = ja.split('\n')
+  return (
+    <p className="col-sm align-self-center">
+      {sentences[0]}
+      <br />
+      {sentences[1]}
+    </p>
+  )
+  // ----------------------------------
 }
 
 export default JapaneseWord
