@@ -5,7 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 config.frontend.version = process.env.npm_package_version
-console.log(config)
 module.exports = {
   entry: {
     app: ['babel-polyfill', './src/index.js'],
