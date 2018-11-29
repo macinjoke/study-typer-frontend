@@ -1,17 +1,14 @@
+/* eslint import/no-extraneous-dependencies: 0 */
 const path = require('path')
 const config = require('config')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 config.frontend.version = process.env.npm_package_version
 module.exports = {
   entry: {
     app: ['babel-polyfill', './src/index.js'],
   },
-  output: {
-    path: path.resolve(__dirname, 'dist/assets'),
-    publicPath: '/assets/',
-    filename: 'bundle.js',
-  },
-  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -29,11 +26,16 @@ module.exports = {
       },
     ],
   },
-  devServer: {
-    host: config.dev_server.host,
-    port: config.dev_server.port,
-    disableHostCheck: true,
-    contentBase: 'dist',
+  plugins: [
+    new CleanWebpackPlugin(['dist/*.*']),
+    new HtmlWebpackPlugin({
+      title: 'Study Typer',
+      template: 'index.html',
+    }),
+  ],
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[hash].bundle.js',
   },
   externals: {
     config: JSON.stringify(config.frontend),
