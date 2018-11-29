@@ -21,7 +21,7 @@ class Game extends React.Component<Props> {
   }
 
   componentDidUpdate(prevProps: Props) {
-    if (prevProps.wordIndex === this.props.wordIndex - 1) {
+    if (prevProps.wordIndex !== this.props.wordIndex) {
       this.playEnglishSound(this.props.words[this.props.wordIndex].en)
     }
   }

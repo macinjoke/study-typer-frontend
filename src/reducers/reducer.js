@@ -21,7 +21,7 @@ const reducer = (
         ? {
             ...state,
             currentInput: '',
-            wordIndex: state.wordIndex + 1,
+            wordIndex: (state.wordIndex + 1) % state.words.length,
           }
         : {
             ...state,
