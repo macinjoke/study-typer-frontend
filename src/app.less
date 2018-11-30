@@ -60,7 +60,7 @@
   padding-top: 2rem;
   padding-bottom: 1rem;
   flex-grow: 1;
-
+  background: #f5f6f7;
   .game {
     background: inherit;
     ol.wordList {
@@ -68,8 +68,25 @@
         padding-bottom: 0.2rem;
         padding-top: 0.2rem;
         &.active {
-          background-color: #e6effa;
+          border-radius: 1rem;
+          background: #ffffff;
+          span.index {
+            color: #2c7ef6;
+          }
         }
+      }
+    }
+    div.japaneseWord {
+      background: #edeeef;
+      padding: 1rem;
+      border-radius: 1.5rem;
+      p.main {
+        font-size: 1.4rem;
+        align-self: center;
+      }
+      p.sub {
+        font-size: 1.0rem;
+        align-self: center;
       }
     }
   }
