@@ -10,7 +10,8 @@
     "test": "jest",
     "flow": "flow",
     "precommit": "flow && lint-staged",
-    "build": "NODE_ENV=production webpack --config webpack.prod.js"
+    "build": "NODE_ENV=production webpack --config webpack.prod.js",
+    "deploy": "aws s3 rm s3://study-typer --recursive --exclude \"*\" --include \"*.bundle.js\" --profile=study-typer && aws s3 cp dist/ s3://study-typer --acl public-read --recursive --exclude \"*\" --include \"*.bundle.js\" --include \"index.html\" --profile=study-typer"
   },
   "lint-staged": {
     "linters": {
