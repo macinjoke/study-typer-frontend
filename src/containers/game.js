@@ -121,4 +121,7 @@ class Game extends React.Component<Props> {
   }
 }
 
-export default connect(s => s, actions)(Game)
+export default connect(
+  s => s,
+  actions,
+)(Game)
