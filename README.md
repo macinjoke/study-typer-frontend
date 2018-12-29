@@ -1,4 +1,4 @@
-# typing-app
+# study-typer-frontend
 WebタイピングゲームをReactで作る。
 
 公開中: http://study-typer.macinjoke.com/
