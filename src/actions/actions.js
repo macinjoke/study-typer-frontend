@@ -1,6 +1,6 @@
 // @flow
-import config from 'config'
 import type { Action, ThunkAction, Words } from '../types'
+import { API_URL } from '../constants'
 
 export const inputKey = (value: string): Action => ({
   type: 'INPUT_KEY',
@@ -31,9 +31,7 @@ export const fetchWordsError = (err: Response): Action => ({
 })
 
 export const fetchWords = (rank: number): ThunkAction => async dispatch => {
-  const url = `http://${config.api_server.host}:${
-    config.api_server.port
-  }/api/words?rank=${rank}`
+  const url = `${API_URL}/api/words?rank=${rank}`
   dispatch(fetchWordsRequest())
   try {
     const res = await fetch(url, { mode: 'cors' })
