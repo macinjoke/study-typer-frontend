@@ -1,8 +1,7 @@
 dev_server:
   host: "127.0.0.1"
   port: 8080
-frontend:
-  api_server:
-    host: "127.0.0.1"
-    port: 80
-    protocol: "http"
+api_server:
+  host: "127.0.0.1"
+  port: 80
+  protocol: "http"

@@ -4,7 +4,7 @@ const config = require('config')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
-config.frontend.version = process.env.npm_package_version
+config.version = process.env.npm_package_version
 module.exports = {
   entry: {
     app: ['babel-polyfill', './src/index.js'],
@@ -38,6 +38,6 @@ module.exports = {
     filename: '[hash].bundle.js',
   },
   externals: {
-    config: JSON.stringify(config.frontend),
+    config: JSON.stringify(config),
   },
 }
