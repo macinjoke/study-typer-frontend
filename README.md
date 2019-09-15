@@ -1,9 +1,11 @@
-# typing-app
+# study-typer-frontend
 WebタイピングゲームをReactで作る。
 
 公開中: http://study-typer.macinjoke.com/
 
 backend: https://github.com/makky05/study-typer-backend
+
+記事を書きました: http://tonkatu05.hatenablog.com/entry/2018/10/17/121701
 
 # Welcome Contribution
 ご意見や、機能のリクエスト、バグ報告など Issue にてお待ちしています。 もしくは [@macinjoke](https://twitter.com/macinjoke) まで。
